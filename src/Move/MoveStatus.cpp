@@ -1,4 +1,4 @@
-#include "MoveStatus.hpp"
+#include <Move/MoveStatus.hpp>
 
 namespace Chess {
 

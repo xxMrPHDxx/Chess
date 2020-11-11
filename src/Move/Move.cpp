@@ -1,5 +1,5 @@
-#include "Move.hpp"
-#include "../Piece/Piece.hpp"
+#include <Move/Move.hpp>
+#include <Piece/Piece.hpp>
 
 namespace Chess {
 

@@ -1,7 +1,7 @@
-#include "PawnAttackMove.hpp"
-#include "../Piece/Piece.hpp"
-#include "../Board/Board.hpp"
-#include "../BoardUtils.hpp"
+#include <Move/PawnAttackMove.hpp>
+#include <Piece/Piece.hpp>
+#include <Board/Board.hpp>
+#include <BoardUtils.hpp>
 
 namespace Chess {
 

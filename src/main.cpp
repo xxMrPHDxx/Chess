@@ -1,9 +1,9 @@
-#include "pch.hpp"
-#include "Board/Board.hpp"
-#include "Player/Player.hpp"
-#include "Move/Move.hpp"
+#include <pch.hpp>
+#include <Board/Board.hpp>
+#include <Player/Player.hpp>
+#include <Move/Move.hpp>
 
-// #include "Game.hpp"
+// #include <Game.hpp>
 
 int main(){
     using namespace Chess;

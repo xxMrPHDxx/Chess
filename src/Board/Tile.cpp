@@ -1,6 +1,6 @@
-#include "Tile.hpp"
-#include "../Piece/Piece.hpp"
-#include "../BoardUtils.hpp"
+#include <Board/Tile.hpp>
+#include <Piece/Piece.hpp>
+#include <BoardUtils.hpp>
 
 namespace Chess {
 

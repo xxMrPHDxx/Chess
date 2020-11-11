@@ -1,13 +1,13 @@
-#include "Pawn.hpp"
-#include "../Board/Tile.hpp"
-#include "../Board/Board.hpp"
-#include "../BoardUtils.hpp"
+#include <Piece/Pawn.hpp>
+#include <Board/Tile.hpp>
+#include <Board/Board.hpp>
+#include <BoardUtils.hpp>
 
-#include "../Move/PawnJump.hpp"
-#include "../Move/PawnMove.hpp"
-#include "../Move/PawnAttackMove.hpp"
-#include "../Move/PawnPromotion.hpp"
-#include "../Move/PawnEnPassantAttack.hpp"
+#include <Move/PawnJump.hpp>
+#include <Move/PawnMove.hpp>
+#include <Move/PawnAttackMove.hpp>
+#include <Move/PawnPromotion.hpp>
+#include <Move/PawnEnPassantAttack.hpp>
 
 namespace Chess {
 

@@ -1,8 +1,8 @@
-#include "PawnPromotion.hpp"
-#include "../Board/Board.hpp"
-#include "../BoardUtils.hpp"
+#include <Move/PawnPromotion.hpp>
+#include <Board/Board.hpp>
+#include <BoardUtils.hpp>
 
-#include "../Piece/Queen.hpp"
+#include <Piece/Queen.hpp>
 
 namespace Chess {
 

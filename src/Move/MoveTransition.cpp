@@ -1,4 +1,4 @@
-#include "MoveTransition.hpp"
+#include <Move/MoveTransition.hpp>
 
 namespace Chess {
 

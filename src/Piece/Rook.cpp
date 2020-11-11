@@ -1,11 +1,11 @@
-#include "Rook.hpp"
-#include "../Board/Tile.hpp"
-#include "../Board/Board.hpp"
-#include "../BoardUtils.hpp"
+#include <Piece/Rook.hpp>
+#include <Board/Tile.hpp>
+#include <Board/Board.hpp>
+#include <BoardUtils.hpp>
 
-#include "../Move/MajorMove.hpp"
-#include "../Move/MajorAttackMove.hpp"
-#include "../Move/CastlingMove.hpp"
+#include <Move/MajorMove.hpp>
+#include <Move/MajorAttackMove.hpp>
+#include <Move/CastlingMove.hpp>
 
 namespace Chess {
 

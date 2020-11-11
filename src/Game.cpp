@@ -1,17 +1,17 @@
-#include "Game.hpp"
-#include "Piece/Piece.hpp"
-#include "Board/Tile.hpp"
-#include "Board/Board.hpp"
-#include "Move/Move.hpp"
-#include "Player/Player.hpp"
-#include "BoardUtils.hpp"
+#include <Game.hpp>
+#include <Piece/Piece.hpp>
+#include <Board/Tile.hpp>
+#include <Board/Board.hpp>
+#include <Move/Move.hpp>
+#include <Player/Player.hpp>
+#include <BoardUtils.hpp>
 
-#include "Move/CastlingMove.hpp"
-#include "Move/MoveTransition.hpp"
+#include <Move/CastlingMove.hpp>
+#include <Move/MoveTransition.hpp>
 
-#include "Piece/Rook.hpp"
-#include "Piece/King.hpp"
-#include "Piece/Pawn.hpp"
+#include <Piece/Rook.hpp>
+#include <Piece/King.hpp>
+#include <Piece/Pawn.hpp>
 
 namespace Chess {
 

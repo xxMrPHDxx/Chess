@@ -1,8 +1,8 @@
-#include "BoardUtils.hpp"
-#include "Board/Tile.hpp"
-#include "Board/Board.hpp"
-#include "Move/Move.hpp"
-#include "Player/Player.hpp"
+#include <BoardUtils.hpp>
+#include <Board/Tile.hpp>
+#include <Board/Board.hpp>
+#include <Move/Move.hpp>
+#include <Player/Player.hpp>
 
 namespace Chess {
 

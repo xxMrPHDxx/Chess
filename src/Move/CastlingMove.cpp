@@ -1,7 +1,7 @@
-#include "CastlingMove.hpp"
-#include "../Piece/Piece.hpp"
-#include "../Board/Board.hpp"
-#include "../BoardUtils.hpp"
+#include <Move/CastlingMove.hpp>
+#include <Piece/Piece.hpp>
+#include <Board/Board.hpp>
+#include <BoardUtils.hpp>
 
 namespace Chess {
 
