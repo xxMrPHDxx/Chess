@@ -1,0 +1,7 @@
+build/
+CMakeFiles/
+chess.exe
+chess
+*.cmake
+CMakeCache.txt
+Makefile
