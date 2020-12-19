@@ -39,6 +39,7 @@ namespace Chess {
 
     Board::Builder& Board::Builder::setMoveMaker(Alliance moveMaker){
         this->moveMaker = moveMaker;
+        return *this;
     }
 
     Board::Builder& Board::Builder::setEnPassantPawn(std::shared_ptr<Piece> pawn){

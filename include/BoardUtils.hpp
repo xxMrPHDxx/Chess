@@ -22,14 +22,14 @@ private:
 public:
     BoardUtils() = delete;
     static const bool isValidTile(int);
-    static const isFirstRow(int pos){ return isRow(pos, 0); }
-    static const isSecondRow(int pos){ return isRow(pos, 1); }
-    static const isSeventhRow(int pos){ return isRow(pos, 6); }
-    static const isEighthRow(int pos){ return isRow(pos, 7); }
-    static const isFirstColumn(int pos){ return isColumn(pos, 0); }
-    static const isSecondColumn(int pos){ return isColumn(pos, 1); }
-    static const isSeventhColumn(int pos){ return isColumn(pos, 6); }
-    static const isEighthColumn(int pos){ return isColumn(pos, 7); }
+    static const bool isFirstRow(int pos){ return isRow(pos, 0); }
+    static const bool isSecondRow(int pos){ return isRow(pos, 1); }
+    static const bool isSeventhRow(int pos){ return isRow(pos, 6); }
+    static const bool isEighthRow(int pos){ return isRow(pos, 7); }
+    static const bool isFirstColumn(int pos){ return isColumn(pos, 0); }
+    static const bool isSecondColumn(int pos){ return isColumn(pos, 1); }
+    static const bool isSeventhColumn(int pos){ return isColumn(pos, 6); }
+    static const bool isEighthColumn(int pos){ return isColumn(pos, 7); }
     static const Alliance getOpponent(Alliance);
     static const int getForward(Alliance);
     static const int getBackward(Alliance ally){ return getForward(getOpponent(ally)); }

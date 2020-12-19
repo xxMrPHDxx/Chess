@@ -16,21 +16,11 @@
 namespace Chess {
 
     Game::Game(){
-        window = std::make_shared<sf::RenderWindow>(
-            sf::VideoMode(504, 504), "Chess", sf::Style::Titlebar | sf::Style::Close
-        );
-        window->setFramerateLimit(30);
-        // chessBoard = Board::createStandardBoard();
-        chessBoard = Board::Builder(Alliance::Black)
-            .setPiece(new Rook(Alliance::Black,0))
-            .setPiece(new King(Alliance::Black,4))
-            .setPiece(new Rook(Alliance::Black,7))
-            .setPiece(new Pawn(Alliance::Black,13))
-            .setPiece(new Rook(Alliance::White,63-0))
-            .setPiece(new Pawn(Alliance::White,28,false))
-            .setPiece(new King(Alliance::White,63-3))
-            .setPiece(new Rook(Alliance::White,63-7))
-            .build();
+        // window = std::make_shared<sf::RenderWindow>(
+        //     sf::VideoMode(504, 504), "Chess", sf::Style::Titlebar | sf::Style::Close
+        // );
+        // window->setFramerateLimit(30);
+        chessBoard = Board::createStandardBoard();
 
         if(!t1.loadFromFile("img/board.png"))
             std::cout << "Failed to load 'img/board.png'!\n";
@@ -54,20 +44,22 @@ namespace Chess {
         }
     }
 
+    /*
     void Game::update(){
         handleEvents();
     }
+    */
 
-    void Game::render(){
-        if(!shouldRedraw) return;
-        window->draw(sBoard);
+    void Game::render(sf::RenderWindow& window){
+        // if(!shouldRedraw || aiThinking) return;
+        window.draw(sBoard);
         // Draw the player in checkmate and stalemate hint
         if(chessBoard->getCurrentPlayer()->isInCheckMate() || chessBoard->getCurrentPlayer()->isInStaleMate()){
             sf::Sprite& s = sUis[chessBoard->getCurrentPlayer()->isInCheckMate() ? 4 : 5];
             const int pos = chessBoard->getCurrentPlayer()->getKing().getPosition();
             const int r = pos >> 3, c = pos & 7;
             s.setPosition(28+c*56, 28+r*56);
-            window->draw(s);
+            window.draw(s);
         }
         // Draw the player in check hint
         else if(chessBoard->getCurrentPlayer()->isInCheck()){
@@ -75,7 +67,7 @@ namespace Chess {
             const int r = pos >> 3, c = pos & 7;
             sf::Sprite& s = sUis[3];
             s.setPosition(28+c*56, 28+r*56);
-            window->draw(s);
+            window.draw(s);
         }
         // Draw the pieces
         for(auto& piece : chessBoard->getAllActivePieces()){
@@ -84,29 +76,34 @@ namespace Chess {
             const int pos = piece->getPosition();
             const int r = pos >> 3, c = pos & 7;
             s.setPosition(sf::Vector2f(28+c*56, 28+r*56));
-            window->draw(s);
+            window.draw(s);
         }
         // Drawing the move hints
         for(auto& hint : moveHints){
             sf::Sprite& s = *hint.spr;
             s.setPosition(hint.pos.x, hint.pos.y);
-            window->draw(s);
+            window.draw(s);
         }
         moveHints.clear();
-        window->display();
+        window.display();
         shouldRedraw = false;
     }
 
-    void Game::handleEvents(){
-        while(window->pollEvent(event)){
+    void Game::executeComputerMove(std::shared_ptr<Move> move){
+        chessBoard = move->execute();
+    }
+
+    void Game::handleEvents(sf::RenderWindow& window, sf::Event& event){
+        while(window.pollEvent(event)){
             switch(event.type){
-                case sf::Event::Closed: window->close(); break;
+                case sf::Event::Closed: window.close(); break;
                 case sf::Event::MouseButtonPressed: onMouseEvent(event.key); break;
             }
         }
     }
 
     void Game::onMouseEvent(sf::Event::KeyEvent& key){
+        /*
         sf::Vector2i mouse = sf::Mouse::getPosition(*window);
         const int row = (mouse.y - 28) / 56, col = (mouse.x - 28) / 56;
         const int idx = (row << 3) | col;
@@ -116,9 +113,11 @@ namespace Chess {
             case sf::Mouse::Button::Left: onTileLeftPressed(pos, idx); break;
             case sf::Mouse::Button::Right: onTileRightPressed(pos, idx); break;
         }
+        */
     }
 
     void Game::onTileLeftPressed(sf::Vector2i& pos, const int idx){
+        /*
         if(srcTile == nullptr){ // First click (Select source tile)
             srcTile = &chessBoard->getTile(idx);
             if(srcTile->isOccupied()){
@@ -148,6 +147,7 @@ namespace Chess {
             srcTile = destTile = nullptr;
             shouldRedraw = true;
         }
+        */
     }
 
     void Game::onTileRightPressed(sf::Vector2i& pos, const int idx){

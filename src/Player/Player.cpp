@@ -42,12 +42,18 @@ namespace Chess {
 
     MoveTransition Player::makeMove(std::shared_ptr<Board> current, std::shared_ptr<Move> move){
         MoveTransition ILLEGAL(current, move, MoveStatus::Illegal);
-        if(!move) return ILLEGAL;
-        auto next = move->execute();
+        if(!move || (move->isAttackMove() && move->getAttackedPiece().isKing())) return ILLEGAL;
+        std::shared_ptr<Board> next;
+        try{ next = move->execute(); }catch(std::invalid_argument& e){return ILLEGAL;}
+        auto player = next->getCurrentPlayer();
         auto opponent = next->getOpponentPlayer();
-        if((current->getCurrentPlayer()->isInCheck() && opponent->isInCheck()) || opponent->isInCheck())
+        if((current->getCurrentPlayer()->isInCheck() && player->isInCheck()) || 
+            (current->getOpponentPlayer()->isInCheck() && opponent->isInCheck()))
             return MoveTransition(current, move, MoveStatus::LeavesPlayerInCheck);
-        else if(!(opponent->isInCheck() || opponent->isInCheckMate() || opponent->isInStaleMate())){
+        else if(!next->getCurrentPlayer()->isInCheckMate() &&
+                !next->getCurrentPlayer()->isInStaleMate() &&
+                !next->getOpponentPlayer()->isInCheckMate() &&
+                !next->getOpponentPlayer()->isInStaleMate()){
             return MoveTransition(next, move, MoveStatus::Success);
         }
         return ILLEGAL;
@@ -55,7 +61,9 @@ namespace Chess {
 
     const bool Player::hasEscapeMoves(Player& player){
         for(auto& move : player.getLegalMoves()){
-            auto board = move->execute();
+            std::shared_ptr<Board> board;
+            try{ board = move->execute(); }
+            catch(std::invalid_argument& e){ continue; }
             if(!board->getOpponentPlayer()->isInCheck())
                 return true;
         }
